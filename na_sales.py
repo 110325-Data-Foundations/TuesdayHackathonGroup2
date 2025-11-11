@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 def printBasicStats_NA(cleanedDF):
     salesDF = cleanedDF["NA_Sales"]
     print()
+    print("Video Game Sales in North America Basic Stats")
     print(f"Mean:{salesDF.mean():.3f}")
     print(f"Median:{salesDF.median():.3f}")
     print(f"Min:{salesDF.min()}, Max:{salesDF.max():.3f}")
@@ -50,6 +51,7 @@ def bestSellingGamePerYear_NA(cleanedDF):
 
     bestSellingPerYearDF = bestSellingPerYearDF.reindex(columns=["Year", "Name", "Rank", "Platform", "Genre", "Publisher", "NA_Sales"])
     print()
+    print("Best Selling Video Game per Year in North America with Platforms")
     print(bestSellingPerYearDF)
 
 def bestSellingGamePerYear_NoPlatform_NA(noPlatformDF):
@@ -64,6 +66,7 @@ def bestSellingGamePerYear_NoPlatform_NA(noPlatformDF):
 
     bestSellingPerYearNoPlatformDF = bestSellingPerYearNoPlatformDF.reindex(columns=["Year", "Name", "Rank", "Genre", "Publisher", "NA_Sales"])
     print()
+    print("Best Selling Video Game per Year in North America")
     print(bestSellingPerYearNoPlatformDF)
 
 
@@ -91,6 +94,7 @@ def corrAllSales(cleanedDF):
     #Correlation Matrix between Sales in different regions
     df2 = cleanedDF.reindex(columns=["NA_Sales", "EU_Sales", "JP_Sales", "Other_Sales", "Global_Sales"])
     print()
+    print("Correlation Coefficients between Region Sales")
     print(df2.corr())
 
 def avgSalesPerGenre_NoPlatform_NA(noPlatformDF):
@@ -108,6 +112,7 @@ def avgSalesPerGenre_NoPlatform_NA(noPlatformDF):
         )
         avgNASalesPerGenreDF = pd.concat([avgNASalesPerGenreDF, newNonDuplicateRow], ignore_index=True)
     print()
+    print("Average Sales per Genre in North America")
     print(avgNASalesPerGenreDF)
 
 def bestSellingGame_NA(cleanedDF):
@@ -115,6 +120,7 @@ def bestSellingGame_NA(cleanedDF):
     maxNA_Sales = cleanedDF["NA_Sales"].max()
     rowWithMaxNA_Sales = cleanedDF.query(f"NA_Sales == {maxNA_Sales}")
     print()
+    print("Best Selling Game in North America")
     print(rowWithMaxNA_Sales)
 
 def cleanSales(df):
@@ -122,19 +128,20 @@ def cleanSales(df):
     cleanedDF["Year"] = cleanedDF["Year"].astype(int)
     return cleanedDF
 
-if __name__ == "__main__":
+def run(df):
     pd.options.mode.chained_assignment = None
-    df = pd.read_csv("vgsales.csv")
     cleanedDF = cleanSales(df)
     
     printBasicStats_NA(cleanedDF)
     noPlatformDF = removePlatformDuplicates_NA(cleanedDF)
-    bestSellingGamePerYear_NA(cleanedDF)
     bestSellingGamePerYear_NoPlatform_NA(noPlatformDF)
     bestSellingGame_NA(cleanedDF)
     plotBarYearVSales_NoPlatform_NA(noPlatformDF)
     corrAllSales(cleanedDF)
     avgSalesPerGenre_NoPlatform_NA(noPlatformDF)
 
-    plt.show()
-    pass
+    #plt.show()
+
+if __name__ == "__main__":
+    df = pd.read_csv("vgsales.csv")
+    run(df)

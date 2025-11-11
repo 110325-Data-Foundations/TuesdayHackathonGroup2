@@ -1,15 +1,11 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-v = "vgsales.csv"
-
-def main():
-    df = pd.read_csv(v)
-    
+def run(df):
     clean_df = df.dropna()
     jp_sales_groupby_genre(clean_df)
+    print()
     corr_jp_sales_to_other(clean_df)
-
 
 def corr_jp_sales_to_other(df):
     correlation = df['Other_Sales'].corr(df['JP_Sales'])
@@ -32,8 +28,7 @@ def jp_sales_groupby_genre(df):
     print("=" * 70)
 
     jp_sales_by_genre['Percentage'] = (jp_sales_by_genre['Total_Sales']/ jp_sales_by_genre['Total_Sales'].sum() *100)
-    
-    
+    print()
     print("Genre preferences (% of total JP sales):")
     print(jp_sales_by_genre[['Total_Sales', 'Percentage']].round(2))
 
@@ -45,7 +40,9 @@ def jp_sales_groupby_genre(df):
     plt.ylabel('Total JP Sales (in millions)')
     plt.title('Total Japan Sales by Genre')
 
-    plt.show()
+    #plt.show()
 
 
-main()
+if __name__ == "__main__":
+    df = pd.read_csv("vgsales.csv")
+    run(df)
