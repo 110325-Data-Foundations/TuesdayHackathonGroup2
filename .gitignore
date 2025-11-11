@@ -1,0 +1,6 @@
+.DS_Store
+.Spotlight-V100
+.Trashes
+._*
+*.pyc
+__pycache__/
