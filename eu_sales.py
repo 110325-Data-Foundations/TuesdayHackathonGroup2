@@ -50,9 +50,9 @@ def run(df):
     top_publishers = avg_sales_per_publisher.sort_values(ascending=False).head(10)
     plt.figure(figsize=(10,6))
     top_publishers.plot(kind='bar', color='green')
-    plt.title('Top 10 Publishers by Average Global Sales')
+    plt.title('Top 10 Publishers by Average Europe Sales')
     plt.xlabel('Publisher')
-    plt.ylabel('Average Global Sales (millions)')
+    plt.ylabel('Average Europe Sales (millions)')
     plt.show()
 
  
