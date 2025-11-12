@@ -145,3 +145,4 @@ def run(df):
 if __name__ == "__main__":
     df = pd.read_csv("vgsales.csv")
     run(df)
+    plt.show()

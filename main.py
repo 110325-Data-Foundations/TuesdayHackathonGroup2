@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sb
 import sys
 
 import na_sales as na
@@ -19,18 +20,22 @@ if __name__ == "__main__":
         na.run(df)
         print()
         print()
+        print()
+        print()
         print("Japan")
         jp.run(df)
+        print()
+        print()
         print()
         print()
         print("Europe")
         eu.run(df)
         print()
         print()
+        print()
+        print()
         print("Global")
         gl.run(df)
-        print()
-        print()
 
         plt.show()
     

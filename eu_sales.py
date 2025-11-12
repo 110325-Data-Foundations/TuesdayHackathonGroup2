@@ -55,6 +55,8 @@ def run(df):
     plt.ylabel('Average Global Sales (millions)')
     plt.show()
 
+ 
 if __name__ == "__main__":
     df = pd.read_csv("vgsales.csv")
     run(df)
+    plt.show()

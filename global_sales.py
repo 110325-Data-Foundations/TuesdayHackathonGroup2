@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 import seaborn as sb
 
@@ -33,11 +34,12 @@ def run(df):
 
     #Show boxplot - groupby separates the data in specified columns, performs a function (mean in this case) and merges the data back together
     df.groupby("Genre")["Global_Sales"].mean().sort_values()
-    plot = sb.boxplot(data=df, x="Genre", y="Global_Sales")
-    #mpl.show()
+    
+    plot = sb.boxplot(data=df, x="Genre", y="Global_Sales").set_title("Global Sales by Genre")
 
 if __name__ == "__main__":
     df = pd.read_csv("vgsales.csv")
     #print(df)
     #print(df.info())
     run(df)
+    plt.show()
