@@ -40,7 +40,13 @@ def jp_sales_groupby_genre(df):
     plt.ylabel('Total JP Sales (in millions)')
     plt.title('Total Japan Sales by Genre')
 
-    #plt.show()
+    plt.show()
+    #Pie chart
+    y_pie = jp_sales_by_genre['Total_Sales']
+    pie_labels = jp_sales_by_genre.index
+
+    plt.pie(y_pie, labels = pie_labels )
+    plt.show()
 
 
 if __name__ == "__main__":
