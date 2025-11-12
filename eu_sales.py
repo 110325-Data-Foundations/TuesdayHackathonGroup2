@@ -20,11 +20,13 @@ def run(df):
 
     print(f"Mean Sales: {mean_sales}")
 
-    avg_sales_per_publisher = CSV.groupby('Publisher')['Global_Sales'].mean()
+    avg_sales_per_publisher = CSV.groupby('Publisher')['EU_Sales'].mean()
+
+    avg_sales_per_publisher = avg_sales_per_publisher.sort_values(ascending=False)
 
     print()
     print("Average Europe Sales per Publisher")
-    print(avg_sales_per_publisher)
+    print(avg_sales_per_publisher.head(10))
 
     #4.2 Correlation
 
@@ -40,7 +42,7 @@ def run(df):
 
     print()
     print("Removed all games made in or before 2005")
-    print(filtered_CSV)
+    print(filtered_CSV.head(10))
 
     #6 Visualization (Matplotlib)
 
